@@ -1,0 +1,24 @@
+# This is chrony.conf deployed by Ansible.  Changes to this file will be overwritten if not deployed from the playbook
+
+server {{ time_server_1 }} iburst
+server {{ time_server_2 }} iburst
+
+keyfile /etc/chrony/chrony.keys
+
+commandkey 1
+
+driftfile /var/lib/chrony/chrony.driftfile
+
+# Comment this line out to turn off logging
+log tracking measurements statistics
+logdir /var/log/chrony
+
+maxupdateskew 100.0
+
+dumponexit
+dumpdir /var/lib/chrony
+local stratum 10
+
+logchange 0.5
+
+rtconutc
